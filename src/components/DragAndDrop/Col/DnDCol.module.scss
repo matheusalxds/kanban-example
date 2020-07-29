@@ -24,12 +24,12 @@ $border-color: rgba(#000, .1);
       &:after {
         position: absolute;
         content: '';
-        top: 0;
-        left: -26px;
-        width: 88px;
+        top: 2px;
+        left: -29px;
+        width: 95px;
         height: 75px;
         background-color: $border-color;
-        clip-path: polygon(50% 35%, 90% 25%, 95% 25%, 50% 37%, 0% 25%, 5% 25%);
+        clip-path: polygon(50% 45%, 90% 30%, 95% 28%, 50% 43%, 0% 22%, 5% 25%);
         transform: rotate(-90deg);
       }
     }

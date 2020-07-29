@@ -20,6 +20,12 @@
     }
   }
 
+  div {
+    span {
+      font-size: $font-size-sm;
+    }
+  }
+
   h3 + span,
   span + div {
     display: block;

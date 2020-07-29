@@ -3,11 +3,14 @@ import moment from 'moment';
 import classNames from 'classnames';
 import { useDrag, useDrop } from 'react-dnd';
 
-import css from './Card.module.scss';
+// context
+import { useContextHook } from '../../../contexts/Context';
+
 
 // components
 import CardStatus from '../CardStatus/CardStatus';
-import { useContextHook } from '../../../contexts/Context';
+
+import css from './Card.module.scss';
 
 const Card = ({ data, index, listIndex }) => {
   const ref = useRef();
