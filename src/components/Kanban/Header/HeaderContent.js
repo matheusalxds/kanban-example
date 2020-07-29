@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from './DnDHeaderContent.module.scss';
+import css from './HeaderContent.module.scss';
 
-const DnDHeaderContent = ({
+const HeaderContent = ({
   title, step, amount, count, label,
 }) => (
   <div className={css['header-content']}>
@@ -27,20 +27,20 @@ const DnDHeaderContent = ({
   </div>
 );
 
-DnDHeaderContent.propTypes = {
+HeaderContent.propTypes = {
   amount: PropTypes.number,
   count: PropTypes.number,
   label: PropTypes.string,
   step: PropTypes.string,
   title: PropTypes.string,
 };
-DnDHeaderContent.defaultProps = {
+HeaderContent.defaultProps = {
   amount: 0,
   count: 0,
   label: 'Oportunidade',
   step: '',
   title: '',
 };
-DnDHeaderContent.displayName = 'HeaderContent';
+HeaderContent.displayName = 'HeaderContent';
 
-export default DnDHeaderContent;
+export default HeaderContent;
