@@ -22,47 +22,32 @@ const DnD = () => {
   const [lists, setLists] = useState(parseData(data));
 
   const moveCard = (fromList, toList, from, to) => {
-    const resp = produce(lists, draft => {
+    const resp = produce(lists, (draft) => {
       const dragged = draft[fromList][from];
       draft[fromList].splice(from, 1);
       draft[toList].splice(to, 0, dragged);
     });
-    setLists(prevState => {
-      return { ...prevState, ...resp };
-    });
-  };
-
-  const moveToList = (fromList, toList, from, to) => {
-    const resp = produce(lists, draft => {
-      const dragged = draft[fromList][from];
-      draft[fromList].splice(from, 1);
-      draft[toList].splice(to, 0, dragged);
-    });
-    setLists(prevState => {
-      return { ...prevState, ...resp };
-    });
+    setLists((prevState) => ({ ...prevState, ...resp }));
   };
 
   return (
-    <BoardContext data={{ lists, moveCard, moveToList }}>
+    <BoardContext data={{ lists, moveCard }}>
       <DnDProvider>
         <DnDHeader />
         <DnDContent>
           {Object.entries(lists)
-            .map(([key, value], index) => {
-              return (
-                <Col key={`${key}-${index + 1}`} listIndex={key} listLength={value.length || 0}>
-                  {value && value.length ? value.map((item, index) => (
-                    <Card
-                      key={item.id}
-                      index={index}
-                      listIndex={key}
-                      data={item}
-                    />
-                  )) : null}
-                </Col>
-              );
-            })}
+            .map(([key, value], listIndex) => (
+              <Col key={`${key}-${listIndex + 1}`} listIndex={key} listLength={value.length || 0}>
+                {value && value.length ? value.map((item, index) => (
+                  <Card
+                    key={item.id}
+                    index={index}
+                    listIndex={key}
+                    data={item}
+                  />
+                )) : null}
+              </Col>
+            ))}
         </DnDContent>
       </DnDProvider>
     </BoardContext>

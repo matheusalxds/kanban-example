@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import classNames from 'classnames';
 import { useDrag, useDrop } from 'react-dnd';
@@ -17,9 +18,9 @@ const Card = ({ data, index, listIndex }) => {
 
   const [{ isDragging }, dragRef] = useDrag({
     item: { type: 'CARD', index, listIndex },
-    collect: monitor => ({
-      isDragging: monitor.isDragging()
-    })
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   });
 
   const [, dropRef] = useDrop({
@@ -44,39 +45,49 @@ const Card = ({ data, index, listIndex }) => {
 
       moveCard(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
 
-      item.index = targetIndex;
-      item.listIndex = targetListIndex;
-    }
+      Object.assign(item, { index: targetIndex, listIndex: targetListIndex });
+    },
   });
+  dragRef(dropRef(ref));
 
   const classes = classNames({
     [css.card]: true,
-    [css['card--dragging']]: isDragging
+    [css['card--dragging']]: isDragging,
   });
 
-  dragRef(dropRef(ref));
-
-  const { amount, days, person, status, title } = data;
+  const {
+    amount, createdAt, customer, status, name,
+  } = data;
 
   return (
     <div className={classes} ref={ref}>
-      <h3>{title}</h3>
+      <h3>{name}</h3>
       <div>
         <span>
-          {moment(days).fromNow()}
+          {moment(createdAt).fromNow()}
         </span>
         <span>
-          {person}
+          {customer}
         </span>
         <span>
           {amount}
         </span>
-        {status ? <CardStatus status={true} /> : <div />}
+        {status ? <CardStatus status={status} /> : <div />}
       </div>
     </div>
   );
 };
 
+Card.propTypes = {
+  data: PropTypes.instanceOf(Object),
+  index: PropTypes.number,
+  listIndex: PropTypes.string,
+};
+Card.defaultProps = {
+  data: null,
+  index: 0,
+  listIndex: '',
+};
 Card.displayName = 'Card';
 
 export default Card;

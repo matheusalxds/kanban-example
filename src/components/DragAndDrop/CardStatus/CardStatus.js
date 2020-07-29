@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-type CardStatusType = {
-  status: boolean
-}
+const CardStatus = ({ status }) => (status ? <span>{status === 5 ? 'Ganho' : 'Arquivado'}</span> : <span />);
 
-const renderStatus = ({ status }: CardStatusType) => <p>{status}</p>;
-
-const CardStatus = ({ status }: CardStatusType) => status ? <div>{renderStatus}</div> : <div />;
-
+CardStatus.propTypes = {
+  status: PropTypes.number,
+};
+CardStatus.defaultProps = {
+  status: null,
+};
 CardStatus.displayName = 'CardStatus';
 
 export default CardStatus;

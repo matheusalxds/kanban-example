@@ -1,21 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import css from './Col.module.scss';
 import { useDrop } from 'react-dnd';
+import css from './Col.module.scss';
 import { useContextHook } from '../../../contexts/Context';
 
-const Col = ({ line = true, arrow = false, listIndex, listLength, children }) => {
-  const { moveToList } = useContextHook();
+const Col = ({
+  line, arrow, listIndex, listLength, children,
+}) => {
+  const { moveCard } = useContextHook();
   const classes = classNames({
     [css.col]: true,
     [css['col--line']]: !!line,
-    [css['col--arrow']]: !!arrow
+    [css['col--arrow']]: !!arrow,
   });
 
   const [, dropRef] = useDrop({
     accept: 'CARD',
-    hover(item, monitor) {
+    hover(item) {
       const draggedListIndex = item.listIndex;
       const targetListIndex = listIndex;
 
@@ -24,11 +27,10 @@ const Col = ({ line = true, arrow = false, listIndex, listLength, children }) =>
 
       if (draggedListIndex === targetListIndex) return;
 
-      moveToList(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
+      moveCard(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
 
-      item.index = listLength;
-      item.listIndex = targetListIndex;
-    }
+      Object.assign(item, { index: listLength, listIndex: targetListIndex });
+    },
   });
 
   return (
@@ -38,6 +40,20 @@ const Col = ({ line = true, arrow = false, listIndex, listLength, children }) =>
   );
 };
 
+Col.propTypes = {
+  line: PropTypes.bool,
+  arrow: PropTypes.bool,
+  listIndex: PropTypes.string,
+  listLength: PropTypes.number,
+  children: PropTypes.oneOfType([PropTypes.instanceOf(Object), PropTypes.instanceOf(Array)]),
+};
+Col.defaultProps = {
+  line: true,
+  arrow: false,
+  listIndex: '',
+  listLength: 0,
+  children: null,
+};
 Col.displayName = 'DnDCol';
 
 export default Col;
