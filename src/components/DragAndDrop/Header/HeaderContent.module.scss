@@ -1,0 +1,28 @@
+@import "./src/styles/settings/spaces";
+@import "./src/styles/settings/colors";
+@import "./src/styles/settings/types";
+
+.header-content {
+  padding: $space-2 $space-3;
+  color: $color-white;
+  font-weight: 100;
+
+  h3 {
+    font-size: $font-size-sm;
+    color: $color-brand-gray-200;
+  }
+
+  span {
+    font-size: $font-size-lg;
+
+    & + span {
+      font-size: $font-size-sm;
+    }
+  }
+
+  h3 + span,
+  span + div {
+    display: block;
+    margin-top: $space-0;
+  }
+}

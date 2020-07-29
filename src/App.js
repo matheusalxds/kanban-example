@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import produce from 'immer';
+
+import loadData from './components/DragAndDrop/__mock__/__fixture';
+
+// context
+import { Context as BoardContext } from './contexts/Context';
+
+// components
+import Main from './components/Main/Main';
+import Content from './components/Content/Content';
+import DnD from './components/DragAndDrop/DnD';
+
+// utils
+import parseData from './components/DragAndDrop/utils/parse-data';
+
+const data = loadData();
 
 function App() {
+  const [lists, setLists] = useState(parseData(data));
+
+  const move = (fromList, toList, from, to) => {
+    const resp = produce(lists, draft => {
+      const dragged = draft[fromList][from];
+      draft[fromList].splice(from, 1);
+      draft[toList].splice(to, 0, dragged);
+    });
+    setLists(prevState => {
+      return { ...prevState, ...resp };
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Main>
+        <Content>
+          <BoardContext data={{ lists, move }}>
+            <DnD />
+          </BoardContext>
+        </Content>
+      </Main>
     </div>
   );
 }

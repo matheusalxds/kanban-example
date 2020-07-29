@@ -1,0 +1,12 @@
+@import "../settings/colors";
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  color: $color-brand-gray-500;
+  font-family: system-ui, sans-serif;
+}
+
+#root {
+  background-color: #EAF0F9;
+}

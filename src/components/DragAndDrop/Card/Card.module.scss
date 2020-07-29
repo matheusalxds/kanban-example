@@ -1,0 +1,47 @@
+@import "./src/styles/settings/spaces";
+@import "./src/styles/settings/types";
+@import "./src/styles/settings/colors";
+@import "./src/styles/settings/radius";
+@import "./src/styles/settings/shadows";
+
+.card {
+  padding: $space-2;
+  box-shadow: $elevation-0;
+  display: inline-flex;
+  border-radius: $radius-2;
+  width: 100%;
+  background-color: $color-white;
+
+  flex-direction: column;
+  transition: all .3s linear;
+
+  h3, span svg {
+    color: $color-primary;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+
+    & + div {
+      margin-top: $space-2;
+    }
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color: $color-brand-gray-300;
+
+    & + span {
+      margin-left: $space-2;
+    }
+  }
+
+  & + .card {
+    margin-top: $space-1;
+  }
+
+  &--dragging {
+    border: dashed 1px $color-brand-gray-200;
+    background-color: transparent;
+  }
+}

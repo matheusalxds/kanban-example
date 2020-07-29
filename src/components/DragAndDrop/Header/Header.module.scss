@@ -1,0 +1,10 @@
+@import "./src/styles/settings/spaces";
+@import "./src/styles/settings/radius";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to right, #4C546E, #2E354D);
+  overflow: hidden;
+  border-radius: $radius-2;
+}
