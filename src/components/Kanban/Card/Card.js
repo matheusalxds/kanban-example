@@ -8,7 +8,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useContextHook } from '../../../contexts/Context';
 
 // components
-import CardStatus from '../CardStatus/CardStatus';
+import CardStatus from './CardStatus';
 
 import css from './Card.module.scss';
 

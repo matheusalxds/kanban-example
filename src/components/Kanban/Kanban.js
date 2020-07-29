@@ -7,8 +7,8 @@ import { Context as BoardContext } from '../../contexts/Context';
 // components
 import Col from './Col/Col';
 import Card from './Card/Card';
-import DnDHeader from './DnDHeader/DnDHeader';
-import DnDContent from './DnDContent/DnDContent';
+import Header from './Header/Header';
+import Board from './Board/Board';
 import DnDProvider from './DnDProvider/DnDProvider';
 
 // utils
@@ -33,8 +33,8 @@ const Kanban = () => {
   return (
     <BoardContext data={{ lists, moveCard }}>
       <DnDProvider>
-        <DnDHeader />
-        <DnDContent>
+        <Header />
+        <Board>
           {Object.entries(lists)
             .map(([key, value], listIndex) => (
               <Col key={`${key}-${listIndex + 1}`} listIndex={key} listLength={value.length || 0}>
@@ -48,7 +48,7 @@ const Kanban = () => {
                 )) : null}
               </Col>
             ))}
-        </DnDContent>
+        </Board>
       </DnDProvider>
     </BoardContext>
   );

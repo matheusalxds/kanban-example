@@ -1,12 +1,12 @@
 import React from 'react';
 
-import css from './DnDHeader.module.scss';
+import css from './Header.module.scss';
 
 // context
 import { useContextHook } from '../../../contexts/Context';
 
 // components
-import DnDHeaderContent from './DnDHeaderContent';
+import HeaderContent from './HeaderContent';
 import Col from '../Col/Col';
 
 const sum = (arr, field) => arr[field].reduce((a, b) => a + b.amount, 0);
@@ -17,13 +17,13 @@ const listMap = [
   { title: 'Step 3', step: 'Proposta enviada', field: 'sent' },
 ];
 
-const DnDHeader = () => {
+const Header = () => {
   const { lists } = useContextHook();
   return (
     <header className={css.header}>
       {listMap.map((item) => (
         <Col>
-          <DnDHeaderContent
+          <HeaderContent
             amount={sum(lists, item.field)}
             count={lists[item.field].length || 0}
             title={item.title}
@@ -35,6 +35,6 @@ const DnDHeader = () => {
   );
 };
 
-DnDHeader.displayName = 'DnDHeader';
+Header.displayName = 'DnDHeader';
 
-export default DnDHeader;
+export default Header;
