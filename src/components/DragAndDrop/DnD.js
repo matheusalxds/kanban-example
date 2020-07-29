@@ -21,7 +21,7 @@ const data = loadData();
 const DnD = () => {
   const [lists, setLists] = useState(parseData(data));
 
-  const move = (fromList, toList, from, to) => {
+  const moveCard = (fromList, toList, from, to) => {
     const resp = produce(lists, draft => {
       const dragged = draft[fromList][from];
       draft[fromList].splice(from, 1);
@@ -33,7 +33,7 @@ const DnD = () => {
   };
 
   return (
-    <BoardContext data={{ lists, move }}>
+    <BoardContext data={{ lists, moveCard }}>
     <DnDProvider>
       <DnDHeader />
       <DnDContent>

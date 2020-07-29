@@ -13,7 +13,7 @@ import css from './Card.module.scss';
 
 const Card = ({ data, index, listIndex }) => {
   const ref = useRef();
-  const { move } = useContextHook();
+  const { moveCard } = useContextHook();
 
   const [{ isDragging }, dragRef] = useDrag({
     item: { type: 'CARD', index, listIndex },
@@ -42,7 +42,7 @@ const Card = ({ data, index, listIndex }) => {
       if (draggedIndex < targetIndex && draggedTop < targetCenter) return;
       if (draggedIndex > targetIndex && draggedTop > targetCenter) return;
 
-      move(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
+      moveCard(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
 
       item.index = targetIndex;
       item.listIndex = targetListIndex;
