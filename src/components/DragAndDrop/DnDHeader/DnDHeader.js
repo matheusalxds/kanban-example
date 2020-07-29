@@ -1,12 +1,12 @@
 import React from 'react';
 
-import css from './Header.module.scss';
+import css from './DnDHeader.module.scss';
 
 // context
 import { useContextHook } from '../../../contexts/Context';
 
 // components
-import HeaderContent from './HeaderContent';
+import DnDHeaderContent from './DnDHeaderContent';
 import Col from '../Col/Col';
 
 const sum = (arr, field) => arr[field].reduce((a, b) => a + b.amount, 0);
@@ -16,7 +16,7 @@ const DnDHeader = () => {
   return (
     <header className={css.header}>
       <Col>
-        <HeaderContent
+        <DnDHeaderContent
           amount={sum(lists, 'new')}
           count={lists.new.length || 0}
           title="Step 1"
@@ -24,7 +24,7 @@ const DnDHeader = () => {
         />
       </Col>
       <Col arrow>
-        <HeaderContent
+        <DnDHeaderContent
           amount={sum(lists, 'contacted')}
           count={lists.contacted.length || 0}
           title="Step 2"
@@ -32,7 +32,7 @@ const DnDHeader = () => {
         />
       </Col>
       <Col arrow>
-        <HeaderContent
+        <DnDHeaderContent
           amount={sum(lists, 'sent')}
           count={lists.sent.length || 0}
           title="Step 3"

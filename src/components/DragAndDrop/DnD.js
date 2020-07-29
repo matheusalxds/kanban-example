@@ -4,21 +4,21 @@ import React from 'react';
 import { useContextHook } from '../../contexts/Context';
 
 // components
-import DnDHeader from './Header/Header';
-import Wrapper from './Wrapper/Wrapper';
+import DnDHeader from './DnDHeader/DnDHeader';
+import DnDContent from './DnDContent/DnDContent';
 import Col from './Col/Col';
 import Card from './Card/Card';
-import Container from './Container/Container';
+import DnDProvider from './DnDProvider/DnDProvider';
 
 const DnD = () => {
   const { lists } = useContextHook();
   return (
-    <Container>
+    <DnDProvider>
       <DnDHeader />
-      <Wrapper>
+      <DnDContent>
         {Object.entries(lists).map(([key, value], index) => {
           return (
-            <Col key={`${key}-${index+1}`}>
+            <Col key={`${key}-${index+1}`} listIndex={key}>
               {value && value.length ? value.map((item, index) => (
                 <Card
                   key={item.id}
@@ -30,8 +30,8 @@ const DnD = () => {
             </Col>
           );
         })}
-      </Wrapper>
-    </Container>
+      </DnDContent>
+    </DnDProvider>
   );
 };
 

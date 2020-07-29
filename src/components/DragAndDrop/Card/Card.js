@@ -6,7 +6,6 @@ import { useDrag, useDrop } from 'react-dnd';
 // context
 import { useContextHook } from '../../../contexts/Context';
 
-
 // components
 import CardStatus from '../CardStatus/CardStatus';
 

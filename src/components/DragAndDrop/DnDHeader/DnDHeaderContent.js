@@ -1,8 +1,8 @@
 import React from 'react';
 
-import css from './HeaderContent.module.scss';
+import css from './DnDHeaderContent.module.scss';
 
-const HeaderContent = ({ title, step, amount, count, label = 'Oportunidade' }) => (
+const DnDHeaderContent = ({ title, step, amount, count, label = 'Oportunidade' }) => (
   <div className={css['header-content']}>
     <h3>{title}</h3>
     <span>{step}</span>
@@ -12,6 +12,6 @@ const HeaderContent = ({ title, step, amount, count, label = 'Oportunidade' }) =
   </div>
 );
 
-HeaderContent.displayName = 'HeaderContent';
+DnDHeaderContent.displayName = 'HeaderContent';
 
-export default HeaderContent;
+export default DnDHeaderContent;
