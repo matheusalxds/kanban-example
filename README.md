@@ -1,4 +1,4 @@
-># Kanbam example project
+># Kanban example project
 >
 > It's a beautiful project using DnD to move cards between columns
 >
