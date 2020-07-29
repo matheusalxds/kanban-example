@@ -56,7 +56,7 @@ const Card = ({ data, index, listIndex }) => {
 
   dragRef(dropRef(ref));
 
-  const { amount, days, person, status, title, kanbamOrder } = data;
+  const { amount, days, person, status, title } = data;
 
   return (
     <div className={classes} ref={ref}>
@@ -72,7 +72,6 @@ const Card = ({ data, index, listIndex }) => {
           {amount}
         </span>
         {status ? <CardStatus status={true} /> : <div />}
-        {JSON.stringify(kanbamOrder)}
       </div>
     </div>
   );
