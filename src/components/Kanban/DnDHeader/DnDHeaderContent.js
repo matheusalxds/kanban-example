@@ -11,10 +11,12 @@ const DnDHeaderContent = ({
     <div>
       <span>
         R$
+        {' '}
         {amount}
       </span>
       {' '}
       •
+      {' '}
       <span>
         {count}
         {' '}

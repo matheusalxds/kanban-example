@@ -18,7 +18,7 @@ import loadData from './__mock__/__fixture';
 // fixtures
 const data = loadData();
 
-const DnD = () => {
+const Kanban = () => {
   const [lists, setLists] = useState(parseData(data));
 
   const moveCard = (fromList, toList, from, to) => {
@@ -54,8 +54,8 @@ const DnD = () => {
   );
 };
 
-DnD.propTypes = {};
-DnD.defaultProps = {};
-DnD.displayName = 'DnD';
+Kanban.propTypes = {};
+Kanban.defaultProps = {};
+Kanban.displayName = 'Kanban';
 
-export default DnD;
+export default Kanban;

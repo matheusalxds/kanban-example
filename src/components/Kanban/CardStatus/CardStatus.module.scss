@@ -1,0 +1,10 @@
+@import "./src/styles/settings/colors";
+
+.status {
+  &--5 {
+    color: $color-success;
+  }
+  &--6 {
+    color: $color-brand-gray-300;
+  }
+}

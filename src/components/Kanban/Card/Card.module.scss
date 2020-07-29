@@ -11,6 +11,8 @@
   border-radius: $radius-2;
   width: 100%;
   background-color: $color-white;
+  color: $color-brand-gray-300;
+  font-size: $font-size-sm;
 
   flex-direction: column;
   transition: all .3s linear;
@@ -27,13 +29,8 @@
     }
   }
 
-  span {
-    font-size: $font-size-sm;
-    color: $color-brand-gray-300;
-
-    & + span {
-      margin-left: $space-2;
-    }
+  span + span {
+    margin-left: $space-2;
   }
 
   & + .card {

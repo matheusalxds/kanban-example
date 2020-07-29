@@ -70,6 +70,8 @@ const Card = ({ data, index, listIndex }) => {
           {customer}
         </span>
         <span>
+          R$
+          {' '}
           {amount}
         </span>
         {status ? <CardStatus status={status} /> : <div />}
