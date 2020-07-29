@@ -41,8 +41,11 @@
   }
 
   &--dragging {
-    border: dashed 1px $color-brand-gray-200;
-    background-color: transparent;
+    background-color: $color-brand-gray-100;
+
+    span, h3 {
+      opacity: 0;
+    }
   }
 
   &:first-of-type {
